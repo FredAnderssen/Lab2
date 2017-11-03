@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <time.h>
+#include <iostream>
+
+
+
+int rnd1to6(int num1);
+
+int main(void)
+{
+
+	srand((int)time(NULL));
+	
+	
+	int one;
+	int two;
+	int three;
+	int money = 100;
+
+	int proceed = 1;
+
+	one = rnd1to6(1); 
+	two = rnd1to6(1);
+	three = rnd1to6(1);
+
+	//whiltesats med flagga
+	while (proceed)
+	{
+		if (money > 10)
+		{
+			if (one && two && three == 6)
+			{
+				money = money + 100;
+			}
+
+			else if (one && two && three == !6)
+			{
+				money = money + 50;
+			}
+
+			//litet fel att tex: one & two kan == three vilket inte är med i beskrivningen
+			else if ((one && two) || (one && three) || (two && three) == one || two || three)
+			{
+				money = money + 10;
+			}
+
+		money = money - 10;
+
+		printf("Do you want to throw the dices again? ");
+		scanf_s("%d", &proceed);
+		getchar();
+		}
+	}
+
+	getchar();
+	return 0;
+}
+
+int rnd1to6(int num1)
+{
+	num1 = rand() % 6 + 1;
+	return num1;
+
+}
+
+
